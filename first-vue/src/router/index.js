@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import DataBinding from '../views/DataBinding.vue'
 import ComputedAndWatch from '../views/ComputedAndWatch.vue'
+import DataBindingMock from '../views/DataBindingMock.vue'
+import NestedComponent from '../views/NestedComponent.vue'
 
 const routes = [
   {
@@ -19,6 +21,16 @@ const routes = [
     name: 'ComputedAndWatch',
     component: ComputedAndWatch
 
+  },
+  {
+    path: '/databindingmock',
+    name: DataBindingMock,
+    component: DataBindingMock
+  },
+  {
+    path: '/nestedcomponent',
+    name: NestedComponent,
+    component: NestedComponent
   }
 
  // {

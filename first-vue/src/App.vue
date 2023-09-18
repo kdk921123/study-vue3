@@ -1,8 +1,10 @@
 <template>
   <nav>
     <router-link to="/">Home</router-link> |
-    <router-link to="/databinding">DataBinding</router-link>
-    <router-link to="/computedandwatch">ComputedAndWatch</router-link>
+    <router-link to="/databinding">DataBinding</router-link> |
+    <router-link to="/computedandwatch">ComputedAndWatch</router-link> |
+    <router-link to="/databindingmock">DataBindingMock</router-link> |
+    <router-link to="/nestedcomponent">NestedComponent</router-link>
   </nav>
   <router-view/>
 </template>
