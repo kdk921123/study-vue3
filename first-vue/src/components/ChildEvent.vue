@@ -7,8 +7,12 @@
     export default {
         data() {
             return {
-                mag: ""
+                mag: "",
+                childMsg: "From Child"
             };
+        },
+        mounted(){
+            this.$emit('send-message', this.childMsg);
         },
 
         methods: {

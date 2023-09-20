@@ -1,23 +1,21 @@
 import { createStore } from 'vuex'
 
-const store = createStore({
+const cart = createStore({
   state() {
     return {
-      count: 0
+      cart: []
+
     }
       
   },
   getters: {
+    cartCount: (state) => {
+      return state.cart.length;
+    }
   },
   mutations: {
-    increment (state) {
-      state.count++
-    }
   },
   actions: {
-    increment(context) {
-      context.commit('increment');
-    }
   },
   modules: {
   }

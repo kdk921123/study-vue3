@@ -25,23 +25,25 @@ export default {
             object: {name : "Lee", age : 24}
         };
     },
-    setup() {
-    },
-    created() {
-    },
     mounted() {
         // this.$refs.child_event.$refs.btn.click();
         // this.$refs.child_event.callFromParent();
     },
     unmounted() {
     },
+    computed: {
+        mag(){
+            console.log(this.$refs.child_event.msg);
+        }
+       
+    },
     methods: {
         changeChildData() {
             this.$refs.child_event.msg = "From Parent Message";
+        },
+        sendMessage(data) {
+            console.log(data);
         }
-       
-
-
     }
     }
 </script>
