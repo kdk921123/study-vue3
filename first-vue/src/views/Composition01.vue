@@ -6,7 +6,7 @@
             <span> + </span>
             <input tyoe="text" v-model="state.num2" @keyup="plusNumbers">
             <span> = </span>
-            <span>{{ result }}</span>
+            <span>{{ state.result }}</span>
         </div>
     </div>
 </template>

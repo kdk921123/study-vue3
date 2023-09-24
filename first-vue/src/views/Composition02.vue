@@ -2,11 +2,11 @@
         <div>
         <h2>Calculator</h2>
         <div>
-            <input type="text" v-model="num1">
+            <input type="text" v-model="state.num1">
             <span> + </span>
-            <input tyoe="text" v-model="num1">
+            <input tyoe="text" v-model="state.num2">
             <span> = </span>
-            <span>{{ result }}</span>
+            <span>{{ state.result }}</span>
         </div>
     </div>
 </template>

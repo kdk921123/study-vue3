@@ -147,7 +147,9 @@
     </div>
 
     <!-- v-on:keyup    @keyup -->
-    <input @keyup.enter="submit"/>
+    <div>
+        <input @keyup.enter="submit"/>
+    </div>
 
 
 

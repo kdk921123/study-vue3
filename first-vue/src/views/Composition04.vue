@@ -12,19 +12,12 @@
 </template>
 
 <script>
-import {reactive, computed, toRefs} from 'vue';
-function plusCalculator(){
-    let state = reactive({
-        num1: 0,
-        num2: 0,
-        result: computed(() => parseInt(sate.num1) + parseInt(state.num2))
-    });
-    return toRefs(state);
-}
 
 
+import {plusCalculator} from '../common.js';
 export default {
-    name: 'Composition03',
+
+    name: 'Composition04',
     setup() {
 
         let {num1, num2, result} = plusCalculator();
