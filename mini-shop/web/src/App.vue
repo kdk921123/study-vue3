@@ -13,7 +13,7 @@
               <li class="nav-item">
                 <router-link  class="nav-link" to="/detail" >제품 상세</router-link >
               </li>
-              <li class="nav-item">
+              <li v-if="user.email != undefined" class="nav-item">
                 <router-link  class="nav-link" to="/create" >제품 등록</router-link >
               </li>
             </ul>
