@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 import ProductList from '../views/ProductList.vue'
 import ProductDetail from '../views/ProductDetail.vue'
 import ProductCreate from '../views/ProductCreate.vue'
+import ProductUpdate from '../views/ProductUpdate.vue'
+import SalesList from '../views/SalesList.vue'
 
 
 
@@ -21,6 +23,16 @@ const routes = [
     path: '/create',
     name: 'ProductCreate',
     component: ProductCreate
+  },
+  {
+    path: '/update',
+    name: 'ProductUpdate',
+    component: ProductUpdate
+  },,
+  {
+    path: '/sales',
+    name: 'SalesList',
+    component: SalesList
   }
 
 ]

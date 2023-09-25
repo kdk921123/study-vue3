@@ -14,7 +14,7 @@
                 <router-link  class="nav-link" to="/detail" >제품 상세</router-link >
               </li>
               <li v-if="user.email != undefined" class="nav-item">
-                <router-link  class="nav-link" to="/create" >제품 등록</router-link >
+                <router-link  class="nav-link" to="/sales" >제품 등록</router-link >
               </li>
             </ul>
             <form class="d-flex" role="search">
