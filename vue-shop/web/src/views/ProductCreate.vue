@@ -1,32 +1,4 @@
 <template>
- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">Navbar</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link " aria-current="page" href="#">홈</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" href="#">전자 제품</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">의류</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">식품</a>
-              </li>
-            </ul>
-            <form class="d-flex" role="search">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-          </div>
-        </div>
-      </nav>
       <main>
         <div class="container mt-4">
           <h2 class="text-center">제품 등록</h2>
@@ -148,49 +120,52 @@ export default {
   },
   methods: {
     goToList(){
-      this.$router.push({path:'/sales'});
-    },
-    async productInsert() {
-
-      this.product.category_id = this.categoryList.filter(c => {
-        return (c.category1 == this.cate1 && c.category2 == this.cate2 && c.category3 == this.cate3);
-      })[0].id;
-
-
-      await this.$api("/api/productInsert", {param:[this.product]});
+      this.$router.push({path:'/sales'}); 
     },
     async getCategoryList(){
-      let categoryList = await this.$api("/api/categoryList", {});
+      let categoryList = await this.$api("/api/categoryList",{});
       this.categoryList = categoryList;
-
+      
       let oCategory = {};
       categoryList.forEach(item => {
         oCategory[item.category1] = item.id;
       });
+
       let category1 = [];
       for(let key in oCategory) {
         category1.push(key);
       }
-      this.category1 = category;
+
+      setTimeout(() => {
+        console.log(hello);
+      }, 10000);
+
+       this.category1 = category1;
 
       let category2 = [];
       category2 = categoryList.filter(c => {
-        return c.category1 == c.category1[0];
+        return c.category1 == category1[0];
       });
+
       let oCategory2 = {};
       category2.forEach(item => {
         oCategory2[item.category2] = item.id;
       });
 
+      category2 = [];
       for(let key in oCategory2) {
         category2.push(key);
       }
+
       this.category2 = category2;
+
+      // console.log(category2);
+
     },
     changeCategory1(){
-
+      // this.cate1
       this.category3 = [];
-      let categoryList = this.catetoryList.filter(c => {
+      let categoryList = this.categoryList.filter(c => {
         return c.category1 == this.cate1;
       });
 
@@ -203,12 +178,11 @@ export default {
       for(let key in oCategory2) {
         category2.push(key);
       }
-      this.category2 = category2;
 
+      this.category2 = category2;
     },
     changeCategory2(){
-
-      let categoryList = this.catetoryList.filter(c => {
+      let categoryList = this.categoryList.filter(c => {
         return (c.category1 == this.cate1 && c.category2 == this.cate2);
       });
 
@@ -221,11 +195,36 @@ export default {
       for(let key in oCategory3) {
         category3.push(key);
       }
+
       this.category3 = category3;
+    },
+    async productInsert() {
+      if(this.product.product_name == "") {
+        return this.$swal("제품명은 필수 입력값입니다.");
+      }
+
+      if(this.product.product_price == "" || this.product.product_price == 0) {
+        return this.$swal("제품 가격을 입력하세요.");
+      }
+
+      if(this.product.delivery_price == "" || this.product.delivery_price == 0) {
+        return this.$swal("배송료를 입력하세요.");
+      }
+
+      if(this.product.outbound_days == "" || this.product.outbound_days == 0) {
+        return this.$swal("출고일을 입력하세요.");
+      }
+
+      this.product.category_id = this.categoryList.filter(c => {
+        return (c.category1 == this.cate1 && c.category2 == this.cate2 && c.category3 == this.cate3);
+      })[0].id;
+
+      await this.$api("/api/productInsert",{param:[this.product]});
+      this.$router.push({path:'/sales'});
+
+        
 
     }
-
   }
-
 }
 </script>
